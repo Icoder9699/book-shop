@@ -1,0 +1,24 @@
+.categories{
+   &-row{
+      display: flex;
+   }
+   &-item{
+      margin-right: 20px;
+      border: 1px solid #ccc;
+      padding: 5px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      &.active{
+         background: rgb(64, 65, 95);
+         color: #fff;
+         border-color: rgb(64, 65, 95);
+      }
+      &:hover{
+         transition: box-shadow 500ms ease-in-out;
+         box-shadow: 0 0 3px #000;
+      }
+   }
+   &-item:last-child{
+      margin-right: 0;
+   }
+}

@@ -1,0 +1,28 @@
+.header{
+   background: rgb(64, 65, 95);
+}
+
+.header-container{
+   // position: static;
+   width: 1120px;
+   margin: 0 auto;
+   padding: 0 10px;
+   height: 100px;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.header-menu ul {
+   display: flex;
+   justify-content: space-between;
+   & li {
+      margin-right: 15px;
+      cursor: pointer;
+      &:hover{
+         opacity: .5;
+      }
+   }
+}
+

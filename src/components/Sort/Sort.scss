@@ -1,0 +1,38 @@
+.sort{
+   position: relative;
+   &-active{
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover{
+         box-shadow: 0 0 3px rgb(64, 65, 95);
+      }
+      span{
+         font-weight: bold;
+      }
+   }
+   &-types{
+      z-index: 99;
+      font-size: 12px;
+      position: absolute;
+      border: 1px solid #ccc;
+      width: 120px;
+      top: 45px;
+      border-radius: 5px;
+      right: -20px;
+      padding: 0;
+      li{
+         padding: 5px ;
+         cursor: pointer;
+         &:hover{
+            background: rgba(64, 65, 95, 0.3);
+            color: #fff;
+         }
+         &.active{
+            background: rgb(64, 65, 95);
+            color: #fff;
+         }
+      }
+   }
+}

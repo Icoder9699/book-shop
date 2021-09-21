@@ -1,0 +1,8 @@
+- filters template
+- database done 
+- pagination done 
+- 
+
+! задание проверить 
+как работает arr.sort 
+parseFloat 
