@@ -26,3 +26,24 @@
    }
 }
 
+.link{
+   position: relative;
+   color: #fff;
+   text-decoration: none;
+   &::before{
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      border-radius: 5px;
+      height: 2px;
+      background: #fff;
+      width: 0%;
+      transition: all 300ms ease-in-out;
+   }
+   &.active::before{
+      width: 100%;
+   }
+}
+
+
+

@@ -17,6 +17,7 @@ export default function Book({books}) {
                         </div>
                         <div className='book-content'>
                            <h4>Author: {book.author}</h4>
+                           <h5>Rating: {book.rating}</h5>
                            {book.text}
                            <div className='book-content-info'>
                               <h5>Price: {book.price}$</h5>

@@ -1,5 +1,8 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchBooks } from '../../app/actions/books'
+import { setCategory, setSortBy } from '../../app/actions/filters'
+
 import Book from '../../components/Book/Book'
 import Categories from '../../components/Categories/Categories'
 import Pagination from '../../components/Pagination/Pagination'
@@ -12,61 +15,29 @@ const sortNames = [
    {type:"price", order:"desc"}, 
    {type: "alphabet", order:"asc"}
 ];
-
-const categories = ['All', 'Drama', 'Fantasy', 'History'];
-
-
+const categories = ['Drama', 'Fantasy', 'History', 'Study'];
 
 export default function Home() {
-   const [books, setBooks] = useState([])
+   const {books} = useSelector(state => state.books)
+   const dispatch = useDispatch()
+   const {category, sortBy} = useSelector(state => state.filters)
    // pagination
    const [currentPage, setCurrentPage] = useState(1)
    const postsPerPage = 3
 
-   const getDbHandler = async () => {
-      const resp = await axios.get('http://localhost:3001/books')
-      setBooks(resp.data)
-   }
-
    useEffect( () => {
-      getDbHandler()
-   }, [])
+      dispatch(fetchBooks(sortBy, category)) // eslint-disable-next-line
+   }, [category, sortBy])
 
-   const filterBooksHandler = (genre) => {
-      console.log(
-         books.filter(book => book.genre === genre)
-      );
+   const filterBooksHandler = (id) => {
+      dispatch(setCategory(id))
    }
 
-   function compare( a, b ) {
-      if ( a.name < b.name ){
-        return -1;
-      }
-      if ( a.name > b.name ){
-        return 1;
-      }
-      return 0;
+   const sortByHandler = (type) => {
+      dispatch(setSortBy(type))
    }
 
-   const sortBooksHandler = (sortType) => {
-      console.log(sortType);
-      if(sortType === 'alphabet'){
-         console.log('test',
-            books.sort(compare)
-         )
-      }else if(sortType === 'price'){
-         console.log(
-           books.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-         );
-      }else if(sortType === 'popular'){
-         console.log(
-            books.sort((a, b) => parseFloat(a.rating) + parseFloat(b.rating))
-         );
-      }
-   }
-
-
-   // чтобы полчуить динамическео кол-во постов 
+   // чтобы полчуить динамическоe кол-во постов 
    const indexOfLastBook = currentPage * postsPerPage  // *  = 1 * 3 = 3
    const indexOfFirstBook = indexOfLastBook - postsPerPage // 3 - 3 = 0
    const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook) //  0, 3
@@ -74,8 +45,15 @@ export default function Home() {
    return (
       <div className='home'>
          <div className='flex j-b'>
-            <Categories filterBooks={filterBooksHandler} categories={categories}/>
-            <Sort sortNames={sortNames} sortBooks={sortBooksHandler} />
+            <Categories 
+               categories={categories} 
+               filterBooks={filterBooksHandler}
+               activeCategory={category}
+            />
+            <Sort 
+               sortNames={sortNames}
+               setSortBy={sortByHandler}
+            />
          </div>
          <Book books={currentBooks}/>
          <Pagination 

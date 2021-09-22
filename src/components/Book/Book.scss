@@ -28,13 +28,18 @@
             margin-top: 20px;
             position: relative;
             width: 70%;
+            h5{
+               text-align: end;
+               color: rgb(60, 190, 0);
+               margin-bottom: 5px;
+            }
             &-info{
                position: absolute;
                bottom: 0;
                right: 10px;
                h5{
-                  text-align: end;
                   margin-bottom: 10px;
+                  color: var(--color);
                }
             }
          }

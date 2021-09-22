@@ -3,22 +3,28 @@
       display: flex;
    }
    &-item{
-      margin-right: 20px;
+
       border: 1px solid #ccc;
+      border-left: none;
       padding: 5px 15px;
-      border-radius: 10px;
       cursor: pointer;
+      width: 100px;
+      text-align: center;
       &.active{
          background: rgb(64, 65, 95);
          color: #fff;
          border-color: rgb(64, 65, 95);
       }
       &:hover{
-         transition: box-shadow 500ms ease-in-out;
+         transition: all 500ms ease-in-out;
          box-shadow: 0 0 3px #000;
       }
    }
+   &-item:first-child{
+      border-radius: 10px 0 0 10px;
+      border-left: 1px solid #ccc;
+   }
    &-item:last-child{
-      margin-right: 0;
+      border-radius: 0 10px 10px 0;
    }
 }

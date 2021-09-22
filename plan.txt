@@ -6,3 +6,10 @@
 ! задание проверить 
 как работает arr.sort 
 parseFloat 
+
+#3 - kun 
+cant - redux toolkit 
+done - routing 
+done - category
+done - sortby
+- read more 

@@ -1,9 +1,10 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './Header.scss'
 
 export default function Header() {
    const links = [
-      {name: 'Login', path: '/login', exact: false},
+      {name: 'Log in', path: '/auth', exact: false},
       {name: 'Home', path: '/', exact: true},
       {name: 'About', path: '/about', exact: false},
    ]
@@ -18,7 +19,9 @@ export default function Header() {
                <ul>
                   {
                      links.map(link => (
-                        <li key={link.name} className="header-menu-item">{link.name}</li>
+                        <li key={link.name} className="header-menu-item">
+                           <NavLink to={link.path} className="link" activeClassName="link active" exact>{link.name}</NavLink>
+                        </li>
                      ))
                   }
                </ul>

@@ -108,10 +108,12 @@ export default function Auth() {
 
    return (
       <section className='auth'>
+         <div className='auth-bg' style={{backgroundImage: 'url(/1.jpg)'}}>
+         </div>
          {
             login ? 
             <div className='auth-container'>
-               <h3>Login</h3>
+               <h3>Log in</h3>
                <form className='auth-form' onSubmit={(e) => submitHandler(e)}>
                   <div className='form-group'>
                      <input ref={emailRef} type="text" name='email' placeholder='Email' />
