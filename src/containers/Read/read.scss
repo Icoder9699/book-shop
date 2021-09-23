@@ -1,0 +1,58 @@
+.read{
+   display: flex;
+   margin: 50px 0;
+   &-title{ 
+      text-align: center;
+      margin-bottom: 20px;
+   }
+   &-img{
+      height: 600px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 5px 3px var(--color);
+      img{
+         height: 100%;
+         width: 600px;
+         max-width: 400px;
+         object-fit: cover;
+      }
+   }
+   &-body{
+      position: relative;
+      margin-left: 30px;
+   }
+   &-info{
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-shadow: 0 0 3px var(--color);
+      border-radius: 5px;
+      p{
+         font-style: italic;
+         &:last-of-type{
+            margin-right: 0;
+         }
+      }
+      span{
+         font-weight: bold;
+      }
+   }
+   &-text{
+      text-align: justify;
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
+   .btn-buy{
+      position: absolute;
+      right: 10px;
+      bottom: 20px;
+      width: 100px;
+      margin-left: 0;
+   }
+}
+
+.helper{
+   text-align: center;
+   margin: 50px 0;
+}

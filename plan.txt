@@ -12,4 +12,12 @@ cant - redux toolkit
 done - routing 
 done - category
 done - sortby
-- read more 
+
+#4 - kun
+done - read more 
+done - card page
+
+#5 - kun 
+fix - card page
+- post page 
+- about page 

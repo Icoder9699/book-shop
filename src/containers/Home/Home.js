@@ -26,7 +26,7 @@ export default function Home() {
    const postsPerPage = 3
 
    useEffect( () => {
-      dispatch(fetchBooks(sortBy, category)) // eslint-disable-next-line
+      dispatch(fetchBooks(sortBy, category))  // eslint-disable-next-line 
    }, [category, sortBy])
 
    const filterBooksHandler = (id) => {
@@ -55,7 +55,7 @@ export default function Home() {
                setSortBy={sortByHandler}
             />
          </div>
-         <Book books={currentBooks}/>
+         <Book books={currentBooks} />
          <Pagination 
             currentPage={currentPage} 
             postsPerPage={postsPerPage}

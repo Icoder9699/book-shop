@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Header.scss'
 
 export default function Header() {
@@ -7,13 +7,14 @@ export default function Header() {
       {name: 'Log in', path: '/auth', exact: false},
       {name: 'Home', path: '/', exact: true},
       {name: 'About', path: '/about', exact: false},
+      {name: 'Cart', path: '/cart', exact: false},
    ]
 
    return (
       <div className='header'>
          <div className='header-container'>
             <div className="header-logo">
-               Book-shop
+               <Link to="/">Book-shop</Link>
             </div>
             <nav className="header-menu">
                <ul>
