@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { addCardItem } from '../../app/actions/card';
+import { addCardItem } from '../../app/actions/cart';
 
 import './Book.scss'
 export default function Book({books}) {

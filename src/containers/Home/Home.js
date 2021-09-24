@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBooks } from '../../app/actions/books'
 import { setCategory, setSortBy } from '../../app/actions/filters'
 
 import Book from '../../components/Book/Book'
@@ -20,14 +19,14 @@ const categories = ['Drama', 'Fantasy', 'History', 'Study'];
 export default function Home() {
    const {books} = useSelector(state => state.books)
    const dispatch = useDispatch()
-   const {category, sortBy} = useSelector(state => state.filters)
+   const {category} = useSelector(state => state.filters)
    // pagination
    const [currentPage, setCurrentPage] = useState(1)
    const postsPerPage = 3
 
-   useEffect( () => {
-      dispatch(fetchBooks(sortBy, category))  // eslint-disable-next-line 
-   }, [category, sortBy])
+   // useEffect( () => {
+   //    dispatch(fetchBooks(sortBy, category))  // eslint-disable-next-line 
+   // }, [category, sortBy])
 
    const filterBooksHandler = (id) => {
       dispatch(setCategory(id))

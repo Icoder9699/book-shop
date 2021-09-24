@@ -1,15 +1,34 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
+import About from '../../containers/About/About'
+import Auth from '../../containers/Auth/Auth'
+import Cart from '../../containers/Cart/Cart'
+import Home from '../../containers/Home/Home'
+import Logout from '../../containers/Logout/Logout'
+import Read from '../../containers/Read/Read'
+
 import './Header.scss'
 
 export default function Header() {
-   const links = [
-      {name: 'Log in', path: '/auth', exact: false},
-      {name: 'Home', path: '/', exact: true},
-      {name: 'About', path: '/about', exact: false},
-      {name: 'Cart', path: '/cart', exact: false},
+   const {token}  = useSelector(state => state.auth)
+   
+   let links = [
+      {name: 'Login', path: '/auth', exact: false, component: Auth},
+      {name: 'Home', path: '/', exact: true, component: Home},
+      {name: 'About', path: '/about', exact: false, component: About},
    ]
 
+   if(token){
+      links = [
+         {name: 'Home', path: '/', exact: true, component: Home},
+         {name: 'Cart', path: '/cart', exact: false, component: Cart},
+         {name: 'About', path: '/about', exact: false, component: About},
+         {name: 'Log out', path: '/logout', exact: false, component: Logout},
+         {name: '', path: '/books/:name', exact: false, component: Read},
+      ]
+   }
+   
    return (
       <div className='header'>
          <div className='header-container'>

@@ -5,7 +5,7 @@ import './read.scss'
 
 const categories = ['Drama', 'Fantasy', 'History', 'Study'];
 
-export default function Read(props) {
+export default function Read() {
    const {books} = useSelector(state => state.books)
    const [item, setItem] = useState([])
    const {name} = useParams()
@@ -13,8 +13,7 @@ export default function Read(props) {
    useEffect(() => {
       const book = books.filter(book => book.name === name)
       setItem(book) //eslint-disable-next-line
-   }, [])
-   console.log(item);
+   }, [books])
 
    return (
       <div>

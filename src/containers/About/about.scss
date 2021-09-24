@@ -1,0 +1,26 @@
+.about{
+   margin: 50px 0;
+   border: 1px solid #ccc;
+   padding: 20px;
+   border-radius: 10px;
+   ul{
+      padding: 10px;
+      li:first-child{
+         font-weight: bold;
+         border-bottom: 1px solid var(--color);
+      }
+      li{
+         border: 1px solid var(--color);
+         padding: 5px;
+         width: 300px;
+         border-bottom: none;
+      }
+      li:nth-child(2){
+         border-top: none;
+      }
+      li:last-child{
+         border-bottom: 1px solid var(--color);
+      }
+   }
+}
+

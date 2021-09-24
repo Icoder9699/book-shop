@@ -18,6 +18,14 @@ done - read more
 done - card page
 
 #5 - kun 
-fix - card page
-- post page 
-- about page 
+fixed - card page
+fixed - single book page
+done  - about page 
+- auth
+
+#6 - kun
+- post page
+- fix rerender
+- propTypes
+- classNames
+- redux-toolkit
