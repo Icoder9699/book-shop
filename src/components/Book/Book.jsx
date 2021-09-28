@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import { addCardItem } from '../../app/actions/cart';
 
 import './Book.scss'
-export default function Book({books}) {
+export default function Book({books, genres}) {
    const dispatch = useDispatch()
    const history = useHistory()
 
@@ -19,7 +19,7 @@ export default function Book({books}) {
                   <div className='book' key={book.id  + index}>
                      <div className='book-header'>
                         <h3 className='book-name'>{book.name}</h3>
-                        <p>{book.genre}</p>
+                        <p>{genres[book.category]}</p>
                      </div>
                      <div className='book-body'>
                         <div className='book-img'>

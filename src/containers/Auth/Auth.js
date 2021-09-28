@@ -116,7 +116,7 @@ export default function Auth() {
 
 
    return (
-      <section className='auth'>
+      <section className='auth container'>
          <div className='auth-bg' style={{backgroundImage: 'url(/1.jpg)'}}>
          </div>
          {

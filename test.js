@@ -41,3 +41,26 @@ const newItems = {
 };
  const totalCount = getTotalSum(newItems, 'items.length');
  const totalPrice = getTotalSum(newItems, 'totalPrice');
+
+const arr = [
+   {
+   name: "Azizbek",
+   age: 24
+   },
+   {
+      name: 'Lazizbek',
+      age: 19
+   }
+];
+
+console.log(
+   arr.find(item => item.age === 19)
+);
+
+
+// ! work with date 
+const currentTime = new Date()
+console.log('CT: ',currentTime);
+
+const date = new Date(new Date().getTime() + 3600 * 1000)
+console.log(date);

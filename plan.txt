@@ -21,11 +21,27 @@ done - card page
 fixed - card page
 fixed - single book page
 done  - about page 
-- auth
+done - auth
+done - fix routes
 
 #6 - kun
-- post page
-- fix rerender
+done - react-slider 
+done - autoLogin 
+fixed - bug with pagination 
+fixed - bug with books in home page
+
+#7 - kun
+done - input component
+done - post page
+ - refactor post-page
+
 - propTypes
+- fix rerender
 - classNames
 - redux-toolkit
+- environment  
+
+
+// difficulties with 
+   autoLogin,
+   new Date

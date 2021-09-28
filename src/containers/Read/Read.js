@@ -1,42 +1,43 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
+import { addCardItem } from '../../app/actions/cart';
 import './read.scss'
 
 const categories = ['Drama', 'Fantasy', 'History', 'Study'];
 
 export default function Read() {
+   const dispatch = useDispatch()
    const {books} = useSelector(state => state.books)
-   const [item, setItem] = useState([])
+   const [item, setItem] = useState({})
    const {name} = useParams()
    
    useEffect(() => {
-      const book = books.filter(book => book.name === name)
-      setItem(book) //eslint-disable-next-line
+      setItem(books.find(book => book.name === name)) // eslint-disable-next-line
    }, [books])
 
    return (
       <div>
          {
-            item.length ? (
-               <div className='read'>
+            item ? (
+               <div className='read container'>
                   <div className='read-img'>
-                     <img src={item[0].imgUrl} alt={item[0].name} />
+                     <img src={item.imgUrl} alt={item.name} />
                   </div>
                   <div className="read-body">
                      <h1 className='read-title'>
-                        {item[0].name}
+                        {item.name}
                      </h1>
                      <div className='read-info'>
-                        <p>Rating: <span>{item[0].rating}</span></p>
-                        <p>Author: <span>{item[0].author}</span></p>
-                        <p>Genre: <span>{categories[item[0].category]}</span></p>
-                        <p>Price: <span>{item[0].price}$</span></p>
+                        <p>Rating: <span>{item.rating}</span></p>
+                        <p>Author: <span>{item.author}</span></p>
+                        <p>Genre: <span>{categories[item.category]}</span></p>
+                        <p>Price: <span>{item.price}$</span></p>
                      </div>
                      <p className='read-text'>
-                        &nbsp; &nbsp; {item[0].text}
+                        &nbsp; &nbsp; {item.text}
                      </p>
-                     <button className="btn btn-buy">Add</button>
+                     <button className="btn btn-buy" onClick={() => dispatch(addCardItem(item))}>Add</button>
                   </div>
                </div>
             ) : 

@@ -13,7 +13,7 @@ export default function Cart() {
       ))
 
    return (
-      <div className='cart'>
+      <div className='cart container'>
          <h1 className='cart-title'>
             Cart page
             <span>Clear</span>

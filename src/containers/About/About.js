@@ -3,14 +3,16 @@ import './about.scss'
 export default function About() {
    const stack = [
       'React JS',
-      'React-router',
+      'React-Router',
+      'React-Slider',
       'Redux',
-      'Redux-thunk',
-      'Json-server',
-      'Axios'
+      'Redux-Thunk',
+      'Json-Server',
+      'Axios',
+      'Firebase auth'
    ]
    return (
-      <div className='about'>
+      <div className='container about'>
          <h1>About Page</h1>
          <p>
             This website was created by Icoder9699. All ideas of mine. This website created to practise React JS.

@@ -18,15 +18,12 @@ const categories = ['Drama', 'Fantasy', 'History', 'Study'];
 
 export default function Home() {
    const {books} = useSelector(state => state.books)
-   const dispatch = useDispatch()
    const {category} = useSelector(state => state.filters)
+   const dispatch = useDispatch()
+   
    // pagination
    const [currentPage, setCurrentPage] = useState(1)
    const postsPerPage = 3
-
-   // useEffect( () => {
-   //    dispatch(fetchBooks(sortBy, category))  // eslint-disable-next-line 
-   // }, [category, sortBy])
 
    const filterBooksHandler = (id) => {
       dispatch(setCategory(id))
@@ -35,14 +32,18 @@ export default function Home() {
    const sortByHandler = (type) => {
       dispatch(setSortBy(type))
    }
-
+   
    // чтобы полчуить динамическоe кол-во постов 
-   const indexOfLastBook = currentPage * postsPerPage  // *  = 1 * 3 = 3
+   const indexOfLastBook  = currentPage * postsPerPage  // *  = 1 * 3 = 3
    const indexOfFirstBook = indexOfLastBook - postsPerPage // 3 - 3 = 0
-   const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook) //  0, 3
+   let currentBooks       = books.slice(indexOfFirstBook, indexOfLastBook) //  0, 3
+
+   if(books.length <= postsPerPage){
+      currentBooks = books
+   }
   
    return (
-      <div className='home'>
+      <div className='home container'>
          <div className='flex j-b'>
             <Categories 
                categories={categories} 
@@ -54,13 +55,20 @@ export default function Home() {
                setSortBy={sortByHandler}
             />
          </div>
-         <Book books={currentBooks} />
-         <Pagination 
-            currentPage={currentPage} 
-            postsPerPage={postsPerPage}
-            setCurrentPage={setCurrentPage}
-            totalBooks={books.length}
+         <Book 
+            books={currentBooks} 
+            genres={categories}
          />
+         {
+            books.length > postsPerPage && (
+            <Pagination 
+               currentPage={currentPage} 
+               postsPerPage={postsPerPage}
+               setCurrentPage={setCurrentPage}
+               totalBooks={books.length}
+            />
+            )
+         }
       </div>
    )
 }

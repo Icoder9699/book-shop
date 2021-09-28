@@ -6,7 +6,9 @@ import Auth from '../../containers/Auth/Auth'
 import Cart from '../../containers/Cart/Cart'
 import Home from '../../containers/Home/Home'
 import Logout from '../../containers/Logout/Logout'
+import PostPage from '../../containers/PostPage/PostPage'
 import Read from '../../containers/Read/Read'
+import Carousel from '../Slider/Slider'
 
 import './Header.scss'
 
@@ -16,6 +18,7 @@ export default function Header() {
    let links = [
       {name: 'Login', path: '/auth', exact: false, component: Auth},
       {name: 'Home', path: '/', exact: true, component: Home},
+      {name: 'Carousel', path: '/carousel', exact: false, component: Carousel},
       {name: 'About', path: '/about', exact: false, component: About},
    ]
 
@@ -23,6 +26,8 @@ export default function Header() {
       links = [
          {name: 'Home', path: '/', exact: true, component: Home},
          {name: 'Cart', path: '/cart', exact: false, component: Cart},
+         {name: 'Post', path: '/post', exact: false, component: PostPage},
+         {name: 'Carousel', path: '/carousel', exact: false, component: Carousel},
          {name: 'About', path: '/about', exact: false, component: About},
          {name: 'Log out', path: '/logout', exact: false, component: Logout},
          {name: '', path: '/books/:name', exact: false, component: Read},
