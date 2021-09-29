@@ -38,7 +38,7 @@ ul li {
 
 /* universal styles */
 .container{
-  width: 1120px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 10px;
 }

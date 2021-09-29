@@ -8,8 +8,9 @@ export default function About() {
       'Redux',
       'Redux-Thunk',
       'Json-Server',
+      'Firebase auth',
+      'Form-validation',
       'Axios',
-      'Firebase auth'
    ]
    return (
       <div className='container about'>

@@ -1,22 +1,27 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../../app/actions/cart';
 import CartItem from '../../components/CartItem/CartItem';
 import './cart.scss'
 
 export default function Cart() {
    const {items, totalPrice, totalCount} = useSelector(({cart}) => cart)
-
+   const dispatch = useDispatch()
    // * получаем данные книги 
    const addedBooks = Object.keys(items)
       .map(key => (
          items[key].items[0]
-      ))
+   ))
+
+   const clearListHandler = () => {
+      dispatch(clearCart())
+   }
 
    return (
       <div className='cart container'>
          <h1 className='cart-title'>
             Cart page
-            <span>Clear</span>
+            <span onClick={clearListHandler}>Clear</span>
          </h1>
          {addedBooks.length ? 
             addedBooks.map((item, index) => (

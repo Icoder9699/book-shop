@@ -16,7 +16,7 @@ export function checkValidation(value, validation = null){
    let isValid = true
 
    if(validation.required){
-      isValid = value.trim() && isValid
+      isValid = value.trim() !== '' && isValid
    }
 
    if(validation.minLength){
@@ -32,4 +32,14 @@ export function checkValidation(value, validation = null){
    }
 
    return isValid
+}
+
+export function checkForm(formControls){
+   let isFormValid = true
+   
+   for(let control in formControls){
+      isFormValid = formControls[control].valid && isFormValid
+   }
+
+   return isFormValid
 }

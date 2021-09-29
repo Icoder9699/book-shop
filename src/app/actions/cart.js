@@ -1,4 +1,4 @@
-import { ADD_ITEM, MINUS_ITEM, PLUS_ITEM, REMOVE_ITEM } from "../types";
+import { ADD_ITEM, CLEAR_CART, MINUS_ITEM, PLUS_ITEM, REMOVE_ITEM } from "../types";
 
 export function addCardItem(item){
    return{
@@ -27,5 +27,12 @@ export function plusCartItem(id){
    return{
       type: PLUS_ITEM,
       payload: id
+   }
+}
+
+
+export function clearCart(){
+   return{
+      type: CLEAR_CART,
    }
 }

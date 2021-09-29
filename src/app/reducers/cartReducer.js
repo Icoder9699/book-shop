@@ -1,4 +1,4 @@
-import { ADD_ITEM, MINUS_ITEM, PLUS_ITEM, REMOVE_ITEM } from "../types";
+import { ADD_ITEM, CLEAR_CART, MINUS_ITEM, PLUS_ITEM, REMOVE_ITEM } from "../types";
 
 
 const initialState = {
@@ -98,6 +98,7 @@ export default function cardReducer(state = initialState, action){
             totalPrice
          }
       }
+      case CLEAR_CART: return {...state, items: [], totalCount: 0, totalPrice: 0}
      
       default: return state
    }

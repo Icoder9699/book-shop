@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { checkValidation, createControl } from '../../components/frameworks/validation'
+import { checkForm, checkValidation, createControl } from '../../components/frameworks/validation'
 import Input from '../../components/UI/Input/Input'
 import Select from '../../components/UI/Select/Select'
 import './postPage.scss'
@@ -11,13 +11,13 @@ export default function PostPage() {
       name: createControl({
          label: 'Name of the book',
          placeholder: 'Book name is here',
-         errorMessage: 'Incorrect value, min length of symbols 6!'
-      }, { minLength: 6, required: true}),
+         errorMessage: 'Cant be empty'
+      }, { required: true}),
       author: createControl({
          label: 'Author of the book',
          placeholder: 'Author',
-         errorMessage: 'Incorrect value, min length of symbols 6!'
-      }, {  minLength: 6, required: true}),
+         errorMessage: 'Cant be empty'
+      }, { required: true}),
       rating: createControl({
          label: 'Rating of the book',
          placeholder: 'Rating',
@@ -52,19 +52,20 @@ export default function PostPage() {
          value: '',
       }, {minLength: 6}),
    })
+   const [isFormValid, setFormValid] = useState(false)
     
    const onChangeHandler = (value, controlName) => {
-      const control = formControls[controlName]
+      const controls =  {...formControls}
+      const control  =  controls[controlName]
+      
+      control.touched = true
+      control.value   = value 
+      control.valid   = checkValidation(control.value, control.validation) // проверяем значение на валидность // true or false
 
-      control.value = value 
-      control.valid = checkValidation(control.value, control.validation)
-
-      formControls[controlName] = control
-      console.log(
-         control.valid,
-         !!control.validation
-      );
-      setFormControls(formControls)
+      controls[controlName] = control
+      
+      setFormControls(controls)
+      setFormValid(checkForm(formControls))
    }
 
    const onSubmitHandler = () => {
@@ -86,10 +87,9 @@ export default function PostPage() {
             if(key === 'text'){
                return (
                   <textarea
-                     key={index}
+                     key={key + index}
                      name={key}
-                     placeholder={control.placeholder}
-                     defaultValue={control.value}
+                     type={control.type}
                      onChange={ e => onChangeHandler(e.target.value, key)}
                   >
                   </textarea>
@@ -108,11 +108,13 @@ export default function PostPage() {
             }
             return (
                <Input 
-                  key={key + index}
                   name={key}
-                  valid={control.valid}
+                  key={key + index}
                   type={control.type}
+                  valid={control.valid}
                   label={control.label}  
+                  value={control.value}
+                  touched={control.touched}
                   shouldValidate={!!control.validation}
                   placeholder={control.placeholder}
                   errorMessage={control.errorMessage}
@@ -129,6 +131,7 @@ export default function PostPage() {
          <button  
             className='btn btn-create'    
             onClick={onSubmitHandler}
+            disabled={!isFormValid}
          >
             Create
          </button>

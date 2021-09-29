@@ -8,6 +8,7 @@ export const ADD_ITEM    = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const PLUS_ITEM   = 'PLUS_ITEM'
 export const MINUS_ITEM  = 'MINUS_ITEM'
+export const CLEAR_CART  = 'CLEAR_CART'
 
 //! auth
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
