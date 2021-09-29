@@ -5,10 +5,7 @@ import { SET_BOOKS, SET_LOADING } from "../types"
 export function fetchBooks(sortBy, category){
    return async dispatch => {
       dispatch(setLoading(false))
-      const resp = await axios.get(
-         `books?${
-         category !== null ? `category=${category}` : ''
-         }&_sort=${sortBy.type}&_order=${sortBy.order}}`)
+      const resp = await axios.get(`/books?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}}`)
       dispatch(setBooks(resp.data))
    }
 }
