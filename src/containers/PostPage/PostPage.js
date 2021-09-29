@@ -78,7 +78,7 @@ export default function PostPage() {
          imgUrl:  formControls.imgUrl.value,
          text:   formControls.text.value,
       }
-      axios.post('http://localhost:3001/books', data);
+      axios.post('/books', data);
    }
 
    const renderControls = () => {
