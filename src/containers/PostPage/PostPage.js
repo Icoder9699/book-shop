@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import { checkForm, checkValidation, createControl } from '../../components/frameworks/validation'
 import Input from '../../components/UI/Input/Input'
 import Select from '../../components/UI/Select/Select'
 import './postPage.scss'
 
 export default function PostPage() {
+   const history = useHistory()
    //eslint-disable-next-line
    const [formControls, setFormControls] = useState({ 
       name: createControl({
@@ -79,6 +81,7 @@ export default function PostPage() {
          text:   formControls.text.value,
       }
       axios.post('/books', data);
+      history.push('/carousel')
    }
 
    const renderControls = () => {
