@@ -13,6 +13,9 @@
          font-weight: normal;
          color: rgb(92, 92, 92);
          cursor: pointer;
+         border: 1px solid rgb(92, 92, 92);
+         padding: 5px;
+         border-radius: 5px;
       }
    }
    &-price{
@@ -22,6 +25,7 @@
       bottom: 20px;
       span{
          margin-right: 20px;
+        
       }
    }
    &-empty{
@@ -38,6 +42,27 @@
       }
       img{
          width: 500px;
+         margin: 0 auto;
+      }
+      .btn-return{
+         width: 100px;
+         margin: 0 auto;
+         margin-top: 20px;
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   &-empty{
+      width: 500px !important;
+      h2{
+        
+      }
+      h3{
+         
+      }
+      img{
+         width: 300px;
          margin: 0 auto;
       }
       .btn-return{
