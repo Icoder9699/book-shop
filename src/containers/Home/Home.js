@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCategory, setSortBy } from '../../app/actions/filters'
 
 import Book from '../../components/Book/Book'
+import CartIcon from '../../components/CartIcon/CartIcon'
 import Categories from '../../components/Categories/Categories'
 import Pagination from '../../components/Pagination/Pagination'
 import Sort from '../../components/Sort/Sort'
@@ -20,6 +21,7 @@ export default function Home() {
    const {books} = useSelector(state => state.books)
    const {category} = useSelector(state => state.filters)
    const dispatch = useDispatch()
+   const {token} = useSelector(state => state.auth)
    
    // pagination
    const [currentPage, setCurrentPage] = useState(1)
@@ -59,6 +61,7 @@ export default function Home() {
             books={currentBooks} 
             genres={categories}
          />
+         {token && <CartIcon />}
          {
             books.length > postsPerPage && (
             <Pagination 

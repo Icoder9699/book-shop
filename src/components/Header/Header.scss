@@ -1,6 +1,9 @@
 .header{
+   width: 100%;
    background: rgb(64, 65, 95);
 }
+
+
 
 .header-container{
    // position: static;
@@ -45,5 +48,15 @@
    }
 }
 
+.link span{
+   position: absolute;
+   top: -15px;
+   height: 15px;
+   width: 15px;
+   border-radius: 10px;
+}
 
 
+@media (max-width: 768px) {
+
+}

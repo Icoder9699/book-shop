@@ -61,3 +61,13 @@ a:hover{
 }
 
 
+@media (max-width: 768px) {
+  .j-b{
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .j-b div{
+    margin-bottom: 10px;
+  }
+}
+

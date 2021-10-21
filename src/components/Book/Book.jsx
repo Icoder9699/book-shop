@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { addCardItem } from '../../app/actions/cart';
@@ -7,6 +8,8 @@ import './Book.scss'
 export default function Book({books, genres}) {
    const dispatch = useDispatch()
    const history = useHistory()
+   const {token} = useSelector(state => state.auth)
+
 
    const readMoreHandler = (name) => {
       history.push('/books/' + name)
@@ -31,8 +34,14 @@ export default function Book({books, genres}) {
                            {book.text}
                            <div className='book-content-info'>
                               <h5>Price: {book.price}$</h5>
-                              <button className="btn" onClick={() => readMoreHandler(book.name)}>Read more</button>
-                              <button className="btn btn-buy" onClick={() => dispatch(addCardItem(book))}>Add</button>
+                              {
+                                 token && (
+                                   <div>
+                                       <button className="btn" onClick={() => readMoreHandler(book.name)}>Read more</button>
+                                       <button className="btn btn-buy" onClick={() => dispatch(addCardItem(book))}>Add</button>
+                                   </div>
+                                 )
+                              }
                            </div>
                         </div>
                      </div>

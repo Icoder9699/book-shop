@@ -9,7 +9,7 @@ Demo:
   <li>React-JS</li>
   <li>React-Hooks</li>
   <li>React-Router</li>
-  <li>React-Redux/li>
+  <li>React-Redux</li>
   <li>Redux</li>
   <li>React-thunk</li>
   <li>Json-server</li>

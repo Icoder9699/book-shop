@@ -14,7 +14,7 @@ import './Header.scss'
 
 export default function Header() {
    const {token}  = useSelector(state => state.auth)
-   
+
    let links = [
       {name: 'Login', path: '/auth', exact: false, component: Auth},
       {name: 'Home', path: '/', exact: true, component: Home},
@@ -45,8 +45,9 @@ export default function Header() {
                   {
                      links.map(link => (
                         <li key={link.name} className="header-menu-item">
-                           <NavLink to={link.path} className="link" activeClassName="link active" exact>{link.name}</NavLink>
-                        </li>
+                         <NavLink to={link.path} className="link" activeClassName="link active" exact>{link.name}  
+                         </NavLink>
+                      </li>
                      ))
                   }
                </ul>
