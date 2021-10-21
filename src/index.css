@@ -62,6 +62,9 @@ a:hover{
 
 
 @media (max-width: 768px) {
+  body{
+    font-size: 14px;
+  }
   .j-b{
     justify-content: space-between;
     flex-direction: column;
