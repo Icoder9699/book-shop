@@ -9,6 +9,7 @@ export default function Auth() {
    const [validPass, setValidPass] = useState(true)
    const [validEmail, setValidEmail] = useState(true)
    const [matchPass, setMatchPass] = useState(true)
+   const [error, setError] = useState("")
    const emailRef = useRef()
    const passRef  = useRef()
    const sPassRef = useRef()
@@ -83,7 +84,7 @@ export default function Auth() {
       
    }
    
-   function submitHandler(e){
+   async function submitHandler(e){
       e.preventDefault()
       const data = {
          email: emailRef.current.value,
@@ -92,7 +93,11 @@ export default function Auth() {
       }
 
       if(checkFormHandler()){
-         dispatch(authentication(data))
+         const error = await dispatch(authentication(data))
+         setError(error.split('_').join(" "))
+         setTimeout(() => {
+            setError('')
+         }, 10000)
       }else{
          console.log('someting went wrong');
       }
@@ -120,9 +125,15 @@ export default function Auth() {
          <div className='auth-bg' style={{backgroundImage: 'url(/1.jpg)'}}>
          </div>
          {
+            error.length
+            ? <h2 className='error'>{error}</h2>
+            : null
+         }
+      
+         {
             login ? 
             <div className='auth-container'>
-               <h3>Log in</h3>
+               <h3>Sign In</h3>
                <form className='auth-form' onSubmit={(e) => submitHandler(e)}>
                   <div className='form-group'>
                      <input ref={emailRef} type="text" name='email' placeholder='Email' />

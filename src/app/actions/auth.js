@@ -8,14 +8,19 @@ export function authentication(userInfo, register){
          url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCaEP1-6ZdQ2wl1C9P7A3MPj81rQGvhaow`
       }
 
-      const {data} = await axios.post(url,userInfo)
-      const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000) 
+      try{
+         const resp = await axios.post(url,userInfo)
+         const expirationDate = new Date(new Date().getTime() + resp.data.expiresIn * 1000) 
       
-      localStorage.setItem('expirationDate', expirationDate)
-      localStorage.setItem('token', data.idToken)
-
-      dispatch(authSuccess(data.idToken))
-      dispatch(autoLogout(data.expiresIn))
+         localStorage.setItem('expirationDate', expirationDate)
+         localStorage.setItem('token', resp.data.idToken)
+         
+         dispatch(authSuccess(resp.data.idToken))
+         dispatch(autoLogout(resp.data.expiresIn))
+      }catch(err){
+         return err.response.data.error.message
+      }
+      
    }
 }
 
