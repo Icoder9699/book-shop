@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { authLogout } from '../../app/actions/auth'
 
 export default function Logout({children}) {
    const dispatch = useDispatch()
-   
+   const history  = useHistory()
+
    useEffect(() => {
       dispatch(authLogout())//eslint-disable-next-line
+      history.push('/')//eslint-disable-next-line
    }, [])
 
    return (

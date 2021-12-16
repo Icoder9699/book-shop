@@ -94,7 +94,9 @@ export default function Auth() {
 
       if(checkFormHandler()){
          const error = await dispatch(authentication(data))
-         setError(error.split('_').join(" "))
+         if(error){
+            setError(error.split('_').join(" "))
+         }
          setTimeout(() => {
             setError('')
          }, 10000)

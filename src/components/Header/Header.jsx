@@ -16,8 +16,8 @@ export default function Header() {
    const {token}  = useSelector(state => state.auth)
 
    let links = [
-      {name: 'Login', path: '/auth', exact: false, component: Auth},
-      {name: 'Home', path: '/', exact: true, component: Home},
+      {name: 'Login', path: '/', exact: false, component: Auth},
+      {name: 'Home', path: '/home', exact: true, component: Home},
       {name: 'Carousel', path: '/carousel', exact: false, component: Carousel},
       {name: 'About', path: '/about', exact: false, component: About},
    ]
