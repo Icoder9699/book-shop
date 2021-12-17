@@ -10,13 +10,16 @@ import NotFound from '../../containers/NotFound/NotFound'
 import PostPage from '../../containers/PostPage/PostPage'
 import Read from '../../containers/Read/Read'
 import Carousel from '../Slider/Slider'
+import EmptyLayout from '../../layouts/EmptyLayout'
+import MainLayout from '../../layouts/MainLayout'
+import AppRoute from './AppRoute'
 
 export default function AppRoutes() {
    const {token} = useSelector(store => store.auth)
 
    let routes = (
       <Switch> 
-         <Route path="/" component={Auth} exact/>
+         <AppRoute path="/" component={Auth}  layout={EmptyLayout} exact />
          <Route path="/home" component={Home} />
          <Route path="/about" component={About} />
          <Route path="/carousel" component={Carousel} />
@@ -28,14 +31,14 @@ export default function AppRoutes() {
    if(token){
      routes = (
       <Switch> 
-         <Route path="/" component={Home} exact />
-         <Route path="/books/:name" component={Read} />
-         <Route path="/cart" component={Cart} />
-         <Route path="/about" component={About} />
-         <Route path="/carousel" component={Carousel} />
-         <Route path="/post" component={PostPage} />
-         <Route path="/logout" component={Logout} />
-         <Route path="*" component={NotFound} />
+         <AppRoute path="/" component={Home}  layout={MainLayout} exact />
+         <AppRoute path="/books/:name" component={Read} layout={MainLayout} />
+         <AppRoute path="/cart" component={Cart} layout={MainLayout} />
+         <AppRoute path="/about" component={About} layout={MainLayout} />
+         <AppRoute path="/carousel" component={Carousel} layout={MainLayout} />
+         <AppRoute path="/post" component={PostPage} layout={MainLayout} />
+         <AppRoute path="/logout" component={Logout} layout={MainLayout} />
+         <AppRoute path="*" component={NotFound} layout={MainLayout} />
          <Redirect to='/' />
       </Switch>
      )
