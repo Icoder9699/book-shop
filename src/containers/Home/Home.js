@@ -15,7 +15,7 @@ const sortNames = [
    {type:"price", order:"desc"}, 
    {type: "alphabet", order:"asc"}
 ];
-const categories = ['Drama', 'Fantasy', 'History', 'Study'];
+const categories = ['drama', 'fantastic', 'history', 'study'];
 
 export default function Home() {
    const {books} = useSelector(state => state.books)
@@ -29,6 +29,7 @@ export default function Home() {
 
    const filterBooksHandler = (id) => {
       dispatch(setCategory(id))
+      setCurrentPage(1)
    }
 
    const sortByHandler = (type) => {

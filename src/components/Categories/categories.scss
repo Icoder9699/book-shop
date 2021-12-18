@@ -3,12 +3,10 @@
       display: flex;
    }
    &-item{
-
       border: 1px solid #ccc;
       border-left: none;
       padding: 5px 15px;
       cursor: pointer;
-      width: 100px;
       text-align: center;
       &.active{
          background: rgb(64, 65, 95);

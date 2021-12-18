@@ -1,14 +1,10 @@
 .sort{
    position: relative;
    &-active{
-      width: 165px;
+      width: 300px;
       padding: 5px 10px;
-      border: 1px solid #ccc;
       border-radius: 10px;
       cursor: pointer;
-      &:hover{
-         box-shadow: 0 0 3px rgb(64, 65, 95);
-      }
       span{
          font-weight: bold;
       }
@@ -19,7 +15,7 @@
       position: absolute;
       border: 1px solid #ccc;
       width: 120px;
-      top: 45px;
+      top: 30px;
       border-radius: 5px;
       right: -20px;
       padding: 0;

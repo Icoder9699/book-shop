@@ -1,12 +1,12 @@
 import React from 'react'
-
+import {useTranslation} from "react-i18next"
 import './categories.scss'
 
 export default function Categories({filterBooks, categories, activeCategory}) {
    const onClickHandler = (index) => {
       filterBooks(index)
    }
-
+   const {t} = useTranslation()
    return (
       <div className='categories'>
          <ul className='categories-row'>
@@ -14,7 +14,7 @@ export default function Categories({filterBooks, categories, activeCategory}) {
                className={ activeCategory === null ? 'categories-item active' : 'categories-item'}
                onClick={() => onClickHandler(null)}
             >
-               All
+               {t('categories.all')}
             </li>
             { categories && categories.map((category, index) => (
                <li 
@@ -22,7 +22,7 @@ export default function Categories({filterBooks, categories, activeCategory}) {
                   className={activeCategory === index ? 'categories-item active' : 'categories-item'}
                   onClick={() => onClickHandler(index)}
                >
-                  {category}
+                  {t(`categories.${category}`)}
                </li>
             ))}
          </ul>

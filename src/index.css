@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 :root{
   --color:  rgb(64, 65, 95);
   --purple: rgb(116, 88, 167);
@@ -7,7 +6,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Poppins';
+  font-family: 'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

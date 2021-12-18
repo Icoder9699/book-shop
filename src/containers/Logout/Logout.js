@@ -8,8 +8,12 @@ export default function Logout({children}) {
    const history  = useHistory()
 
    useEffect(() => {
-      dispatch(authLogout())//eslint-disable-next-line
-      history.push('/')//eslint-disable-next-line
+      if(window.confirm('Точно хотите выйти?')){
+         dispatch(authLogout())//eslint-disable-next-line
+         history.push('/')//eslint-disable-next-line
+      }else{
+         history.push('/home')
+      }
    }, [])
 
    return (

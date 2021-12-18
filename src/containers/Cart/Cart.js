@@ -1,5 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next';
+
 import { clearCart } from '../../app/actions/cart';
 import CartItem from '../../components/CartItem/CartItem';
 import './cart.scss'
@@ -7,6 +9,7 @@ import './cart.scss'
 export default function Cart() {
    const {items, totalPrice, totalCount} = useSelector(({cart}) => cart)
    const dispatch = useDispatch()
+   const {i18n, t} = useTranslation()
    // * получаем данные книги 
    const addedBooks = Object.keys(items)
       .map(key => (
@@ -14,14 +17,22 @@ export default function Cart() {
    ))
 
    const clearListHandler = () => {
-      dispatch(clearCart())
+      if(window.confirm(i18n.t('cart.confirm'))){
+         dispatch(clearCart())
+      }
    }
 
    return (
       <div className='cart container'>
          <h1 className='cart-title'>
-            Cart page
-            <span onClick={clearListHandler}>Clear</span>
+            {t('cart.title')}
+            <button 
+               className='btn-clear'
+               onClick={clearListHandler} 
+               disabled={!addedBooks.length}
+            >
+               {t('cart.btn_clear')}
+            </button>
          </h1>
          {addedBooks.length ? 
             addedBooks.map((item, index) => (
@@ -33,15 +44,15 @@ export default function Cart() {
               />
             ))
             : <div className='cart-empty'>
-               <h2>Cart is empty!</h2>
-               <h3>Buy something to read!</h3>
+               <h2>{t('cart.empty')}</h2>
+               <h3>{t('cart.recommend')}</h3>
                <img src="/book.png" alt="book" />
-               <button className='btn btn-return'>Return Back</button>
+               <button className='btn btn-return'>{t('cart.btn_back')}</button>
             </div>
          }       
          <h4 className='cart-price'>
-            <span>Total price: {totalPrice}$</span>
-            <span>Total count: {totalCount}</span>
+            <span>{t('cart.totalPrice')}: {totalPrice}$</span>
+            <span>{t('cart.totalCount')}: {totalCount}</span>
          </h4>  
       </div>
    )
