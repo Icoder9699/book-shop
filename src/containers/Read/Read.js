@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {useTranslation} from 'react-i18next'
+
 import { useParams } from 'react-router'
 import { addCardItem } from '../../app/actions/cart';
 import './read.scss'
@@ -11,6 +13,7 @@ export default function Read() {
    const {books} = useSelector(state => state.books)
    const [item, setItem] = useState({})
    const {name} = useParams()
+   const {t} = useTranslation()
    
    useEffect(() => {
       setItem(books.find(book => book.name === name)) // eslint-disable-next-line
@@ -37,7 +40,7 @@ export default function Read() {
                      <p className='read-text'>
                         &nbsp; &nbsp; {item.text}
                      </p>
-                     <button className="btn btn-buy" onClick={() => dispatch(addCardItem(item))}>Add</button>
+                     <button className="btn btn-buy" onClick={() => dispatch(addCardItem(item))}>{t('book.btn_add')}</button>
                   </div>
                </div>
             ) : 

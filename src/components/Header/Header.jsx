@@ -22,6 +22,7 @@ export default function Header() {
       label: 'en', value: "en"
    })
 
+
    let links = [
       {name: i18n.t('header.auth'), path: '/', exact: false, component: Auth},
       {name: i18n.t('header.home'), path: '/home', exact: true, component: Home},
@@ -42,8 +43,7 @@ export default function Header() {
    }
 
    useEffect(() => {
-      console.log('changed')
-      i18n.changeLanguage(lang.value);
+      i18n.changeLanguage(lang.value); //eslint-disable-next-line
    }, [lang.value])
   
 
@@ -63,14 +63,14 @@ export default function Header() {
                       </li>
                      ))
                   }
+                  <ReactSelect
+                     placeholder="lang"
+                     isSearchable={false}
+                     value={lang}
+                     onChange={setLang}
+                  />
                </ul>
             </nav>
-            <ReactSelect
-               placeholder="lang"
-               isSearchable={false}
-               value={lang}
-               onChange={setLang}
-            />
          </div>
       </div>
    )

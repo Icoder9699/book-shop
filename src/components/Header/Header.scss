@@ -17,6 +17,7 @@
 .header-menu ul {
    display: flex;
    justify-content: space-between;
+   align-items: center;
    & li {
       margin-right: 15px;
       cursor: pointer;

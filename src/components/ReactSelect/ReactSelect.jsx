@@ -3,8 +3,8 @@ import Select from 'react-select'
 
 export default function ReactSelect(props) {
   const options = [
-    { value: 'ru', label: 'ru' },
-    { value: 'en', label: 'en' }
+    { value: 'en', label: 'en' },
+    { value: 'ru', label: 'ru' }
   ];
 
   const styles = {
@@ -19,9 +19,9 @@ export default function ReactSelect(props) {
         backgroundColor:  state.isDisabled
         ? 'rgb(64, 65, 95, .5)'
         : state.isSelected
-        ? 'rgb(64, 65, 95)'
+        ? 'rgb(64, 65, 95, .8)'
         : state.isFocused
-        ? 'rgb(64, 65, 95, .4)'
+        ? 'rgb(64, 65, 95, .5)'
         : undefined,
         color: state.isDisabled
         ? "#000"
@@ -31,7 +31,7 @@ export default function ReactSelect(props) {
         ? '#fff'
         : '#000',
         cursor: 'pointer',
-        width: '100px'
+        width: '100px',
       }
     }
   };
