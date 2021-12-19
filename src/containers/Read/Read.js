@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next'
 
 import { useParams } from 'react-router'
 import { addCardItem } from '../../app/actions/cart';
+import CartIcon from '../../components/CartIcon/CartIcon';
 import './read.scss'
 
 const categories = ['Drama', 'Fantasy', 'History', 'Study'];
@@ -21,6 +22,7 @@ export default function Read() {
 
    return (
       <div>
+         <CartIcon/>
          {
             item ? (
                <div className='read container'>

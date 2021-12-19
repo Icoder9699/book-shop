@@ -5,6 +5,7 @@ import Slider from 'react-slick'
 import './slider.scss'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import CartIcon from '../CartIcon/CartIcon'
 
 export default function Carousel() {
    const {books} = useSelector(state => state.books)
@@ -31,6 +32,7 @@ export default function Carousel() {
                )
             }
          </Slider>
+         <CartIcon/>
          <p>Hello my friend! You are welcome to my project and I'm glad to see you!
             <br/>
             It is simple slider. If you logged you can see books by clicking to slide =)

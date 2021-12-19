@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
+
 import { checkForm, checkValidation, createControl } from '../../components/frameworks/validation'
+import CartIcon from '../../components/CartIcon/CartIcon'
 import Input from '../../components/UI/Input/Input'
 import Select from '../../components/UI/Select/Select'
 import './postPage.scss'
@@ -110,19 +112,22 @@ export default function PostPage() {
                )
             }
             return (
-               <Input 
-                  name={key}
-                  key={key + index}
-                  type={control.type}
-                  valid={control.valid}
-                  label={control.label}  
-                  value={control.value}
-                  touched={control.touched}
-                  shouldValidate={!!control.validation}
-                  placeholder={control.placeholder}
-                  errorMessage={control.errorMessage}
-                  onChange={ e => onChangeHandler(e.target.value, key)}                   
-               />
+               <div>
+                  <Input 
+                     name={key}
+                     key={key + index}
+                     type={control.type}
+                     valid={control.valid}
+                     label={control.label}  
+                     value={control.value}
+                     touched={control.touched}
+                     shouldValidate={!!control.validation}
+                     placeholder={control.placeholder}
+                     errorMessage={control.errorMessage}
+                     onChange={ e => onChangeHandler(e.target.value, key)}                   
+                  />
+                  <CartIcon/>
+               </div>
             )
       })
    }

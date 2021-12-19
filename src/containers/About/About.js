@@ -1,5 +1,8 @@
 import React from 'react'
 import './about.scss'
+
+import CartIcon from '../../components/CartIcon/CartIcon'
+
 export default function About() {
    const stack = [
       'React JS',
@@ -15,6 +18,7 @@ export default function About() {
    return (
       <div className='container about'>
          <h1>About Page</h1>
+         <CartIcon/>
          <p>
             This website was created by Icoder9699. All ideas of mine. This website created to practise React JS.
          </p>
